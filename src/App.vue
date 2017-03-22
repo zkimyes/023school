@@ -1,11 +1,11 @@
 <template>
-  <div id="App" class="page-content">
+  <div id="App" class="container">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import './assets/style.css'
+require('./assets/style.css')
 export default {
   name: 'app',
   components:{

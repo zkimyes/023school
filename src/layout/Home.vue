@@ -1,53 +1,44 @@
 <template>
-  <div class="page page-current">
-    <header class="bar bar-nav">
-    </header>
-    <nav class="bar bar-tab">
-      <a class="tab-item active"
-         href="#">
-        <span class="icon icon-home"></span>
-        <span class="tab-label">校园动态</span>
-      </a>
-      <a class="tab-item"
-         href="#">
-        <span class="icon icon-me"></span>
-        <span class="tab-label">美丽校园</span>
-      </a>
-      <a class="tab-item"
-         href="#">
-        <span class="icon icon-star"></span>
-        <span class="tab-label">收藏</span>
-      </a>
-      <a class="tab-item"
-         href="#">
-        <span class="icon icon-settings"></span>
-        <span class="tab-label">设置</span>
-      </a>
-    </nav>
+  <div class="page js_show">
+    <logo></logo>
+    <form class="weui-search-bar__form">
+      <div class="weui-search-bar__box">
+        <i class="weui-icon-search"></i>
+        <input type="search"
+               class="weui-search-bar__input"
+               id="searchInput"
+               placeholder="搜索"
+               required="">
+        <a href="javascript:"
+           class="weui-icon-clear"
+           id="searchClear"></a>
+      </div>
+      <label class="weui-search-bar__label"
+             id="searchText">
+        <i class="weui-icon-search"></i>
+        <span>搜索学校</span>
+      </label>
+    </form>
     <div class="content native-scroll">
-      <swiper>
-        <swiper-item>asdasd</swiper-item>
-        <swiper-item>asdasd</swiper-item>
-        <swiper-item>asdasd</swiper-item>
-      </swiper>
-      <div class="content-block-title">曲目列表</div>
-      <div class="list-block media-list">
+      <home-menu></home-menu>
+  
+      <div class="note-list">
+        <div class="top-title">最新校园动态</div>
         <ul>
-          
-          <li>
-            <a href="#" class="item-link item-content">
-              <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="80"></div>
-              <div class="item-inner">
-                <div class="item-title-row">
-                  <div class="item-title">标题</div>
-                  <div class="item-after">$15</div>
-                </div>
-                <div class="item-subtitle">标题</div>
-                <div class="item-text">此处是文本内容...</div>
-              </div>
-            </a>
+          <li v-for="item in news" class="have-img">
+            <link to="{ name: 'news', params: { id: item.id }}"
+               class="wrap-img"><img :src='"http://www.023xiaoyuan.com/"+item.tumb'></link>
+            <div class="content">
+              <link to="{ name: 'news', params: { id: item.id }}">
+                <div class="author">
+                  <div class="name"><a>
+                  {{item.schoolname}}
+                </a></div> <span class="time">{{item.create_time}}</span></div>
+                <div class="title">{{item.title}}</div>
+                <div class="meta"><i class="iconfont ic-list-read"></i> <span>2029</span> <i class="iconfont ic-list-comments"></i> <span>45</span> <i class="iconfont ic-list-like"></i> <span>169</span> <i class="iconfont ic-list-money"></i> <span>2</span></div>
+              </link>
+            </div>
           </li>
-
         </ul>
       </div>
     </div>
@@ -55,21 +46,27 @@
 </template>
 
 <script>
-import {Swiper,SwiperItem} from '../components'
+import { Swiper, SwiperItem, HomeMenu, logo } from '../components'
+import {Link} from 'vue-router'
 export default {
   name: 'home',
   components: {
-    Swiper,SwiperItem
+    Swiper, SwiperItem, HomeMenu, logo,Link
   },
-  methods: {
+  computed:{
+    news(){
+      return this.$store.getters.getNewsList
+    }
+  },
+  mounted(){
+    this.$store.dispatch('fetchNewsList');
   }
-
 }
 </script>
 
 <style>
-  .swiper-container{
-    height: 200px;
-    background: #ff9900;
-  }
+.swiper-container {
+  height: 200px;
+  background: #ff9900;
+}
 </style>

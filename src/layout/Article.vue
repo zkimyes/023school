@@ -1,0 +1,33 @@
+<template>
+  <div class="page js_show">
+    <div class="content">
+       <article class="weui-article">
+            <h1 v-text="article.title"></h1>
+            <section v-html="article.content">
+            </section>
+        </article>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'home',
+  computed:{
+    article(){
+      return this.$store.getters.getNews
+    }
+  },
+  beforeMount(){
+    const id = this.$route.params.id;
+    this.$store.dispatch('fetchNewsById',id);
+  }
+}
+</script>
+
+<style>
+.swiper-container {
+  height: 200px;
+  background: #ff9900;
+}
+</style>
