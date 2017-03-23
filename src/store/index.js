@@ -3,16 +3,36 @@ import Vuex from 'vuex'
 import state from './state'
 import getters from './getters'
 import home from './modules/home'
-
+import school from './modules/school'
 Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 
+const actions = {
+  setLoading({commit}, isloading) {
+      commit('setLoading', isloading)
+  },
+  setTopShow({commit}, isTopShow) {
+      commit('showTop', isTopShow)
+  }
+}
+
+const mutations = {
+  setLoading(state, isloading) {
+    state.loading = isloading
+  },
+  showTop(state,isTopShow){
+     state.showTop = isTopShow
+  }
+}
+
 export default new Vuex.Store({
   state,
   getters,
+  actions,
+  mutations,
   modules: {
-    home
-  },
+    home,
+  school},
   strict: debug
 })

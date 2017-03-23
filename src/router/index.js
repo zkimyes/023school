@@ -3,25 +3,29 @@ import Router from 'vue-router'
 import Home from '@/layout/Home'
 // import News from '@/layout/News'
 import Article from '@/layout/Article'
-
+import School from '@/layout/School'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'Home',
       component: Home
     },
     {
-      path:'/news',
-      name:'News',
+      path: '/news',
+      name: 'News',
       //component:News
     },
     {
-      path:'/news/:id',
-      name:'News',
-      component:Article
+      path: '/news/:id',
+      name: 'Article',
+      component: Article
+    },
+    {
+      path:'/school',
+      name:'School',
+      component: School
     }
   ]
 })

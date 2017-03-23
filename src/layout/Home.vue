@@ -3,21 +3,12 @@
     <logo></logo>
     <form class="weui-search-bar__form">
       <div class="weui-search-bar__box">
-        <i class="weui-icon-search"></i>
         <input type="search"
                class="weui-search-bar__input"
                id="searchInput"
                placeholder="搜索"
                required="">
-        <a href="javascript:"
-           class="weui-icon-clear"
-           id="searchClear"></a>
       </div>
-      <label class="weui-search-bar__label"
-             id="searchText">
-        <i class="weui-icon-search"></i>
-        <span>搜索学校</span>
-      </label>
     </form>
     <div class="content native-scroll">
       <home-menu></home-menu>
@@ -26,17 +17,17 @@
         <div class="top-title">最新校园动态</div>
         <ul>
           <li v-for="item in news" class="have-img">
-            <link to="{ name: 'news', params: { id: item.id }}"
-               class="wrap-img"><img :src='"http://www.023xiaoyuan.com/"+item.tumb'></link>
+            <router-link :to="{ name: 'Article', params: { id: item.id }}"
+               class="wrap-img"><img :src='"http://www.023xiaoyuan.com/"+item.tumb'></router-link>
             <div class="content">
-              <link to="{ name: 'news', params: { id: item.id }}">
+              <router-link :to="{ name: 'Article', params: { id: item.id }}">
                 <div class="author">
-                  <div class="name"><a>
+                  <div class="name">
                   {{item.schoolname}}
-                </a></div> <span class="time">{{item.create_time}}</span></div>
+                  </div> <span class="time">{{item.create_time}}</span></div>
                 <div class="title">{{item.title}}</div>
                 <div class="meta"><i class="iconfont ic-list-read"></i> <span>2029</span> <i class="iconfont ic-list-comments"></i> <span>45</span> <i class="iconfont ic-list-like"></i> <span>169</span> <i class="iconfont ic-list-money"></i> <span>2</span></div>
-              </link>
+              </router-link>
             </div>
           </li>
         </ul>
@@ -47,11 +38,10 @@
 
 <script>
 import { Swiper, SwiperItem, HomeMenu, logo } from '../components'
-import {Link} from 'vue-router'
 export default {
   name: 'home',
   components: {
-    Swiper, SwiperItem, HomeMenu, logo,Link
+    Swiper, SwiperItem, HomeMenu, logo
   },
   computed:{
     news(){
@@ -59,6 +49,7 @@ export default {
     }
   },
   mounted(){
+    this.$store.dispatch('setTopShow',false);
     this.$store.dispatch('fetchNewsList');
   }
 }

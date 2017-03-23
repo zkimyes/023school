@@ -11,9 +11,6 @@ export default {
                 url:''
             }
         ],
-        schools:[
-
-        ],
         news:[],
         article:{
             id:'',
@@ -22,12 +19,6 @@ export default {
         }
     },
     mutations: {
-        fetchSchool(state,schools){
-            state.schools = [
-                ...state.schools,
-                ...schools
-            ]
-        },
         fetchHotNews(state,news){
             state.news = [
                 ...state.news,
@@ -39,12 +30,10 @@ export default {
         }
     },
     actions: {
-        fetchSchoolByService({commit}){
-            commit('fetchSchool',[])
-        },
         fetchNewsList({commit}){
             service.fetchHotNews().then(
                 data=>{
+                    commit('setLoading',false);
                     commit('fetchHotNews',data)
                 },
                 error=>{
@@ -55,6 +44,7 @@ export default {
         fetchNewsById({commit},id){
             service.fetchNewsById(id).then(
                 data=>{
+                    commit('setLoading',false);
                     commit('readNews',data)
                 },
                 error=>{

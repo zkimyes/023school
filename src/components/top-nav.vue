@@ -1,15 +1,9 @@
 <template>
-    <header class="bar bar-nav">
-        <button @click="buttonLeft.action()" v-show="buttonLeft.show"
-                class="button pull-left">
-            {{buttonLeft.text}}
-        </button>
-        <button @click="buttonRight.action()" v-show="buttonRight.show"
-                class="button pull-right">
-            {{buttonRight.text}}
-        </button>
-        <h1 class="title">{{title}}</h1>
-    </header>
+    <div class="header box">
+        <div class="back box-item"><i class="bi bi-arrow-left"></i></div>
+        <div class="title box-item">小说书城</div><a class="search box-item"
+           href="/search?query=%E6%90%9C%E7%B4%A2"><i class="bi bi-search"></i></a>
+        <div class="profile"></div><span></span></div>
 </template>
 <style>
 
@@ -18,30 +12,30 @@
 export default {
     props: {
         title: {
-            type:String,
-            default:()=>{
+            type: String,
+            default: () => {
                 return '标题'
             }
         },
         buttonLeft: {
-            type:Object,
-            default:()=>{
+            type: Object,
+            default: () => {
                 return {
-                  show: false,
-                  text: '左按钮',
-                  action:()=>{
-                  }
+                    show: false,
+                    text: '左按钮',
+                    action: () => {
+                    }
                 }
             }
         },
         buttonRight: {
-            type:Object,
-            default:()=>{
+            type: Object,
+            default: () => {
                 return {
-                  show: false,
-                  text: '右按钮',
-                  action:()=>{
-                  }
+                    show: false,
+                    text: '右按钮',
+                    action: () => {
+                    }
                 }
             }
         },

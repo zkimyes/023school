@@ -2,10 +2,14 @@
 <div>
     <div class="weui-grids">
         <a href="javascript:;" class="weui-grid">
-            <p class="weui-grid__label">首页</p>
+            <p class="weui-grid__label">
+                <router-link to="">首页</router-link>
+            </p>
         </a>
         <a href="javascript:;" class="weui-grid">
-            <p class="weui-grid__label">美丽校园</p>
+            <p class="weui-grid__label">
+                <router-link to="school">美丽校园</router-link>
+            </p>
         </a>
         <a href="javascript:;" class="weui-grid">
             <p class="weui-grid__label">校园动态</p>

@@ -8,11 +8,23 @@ import store from './store'
 Vue.config.productionTip = false
 
 
+router.afterEach(route => {
+  document.body.scrollTop = 0;
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  watch:{
+    '$route': 'showloading'
+  },
+  methods:{
+    showloading(){
+      this.$store.dispatch('setLoading',true);
+    }
+  }
 })

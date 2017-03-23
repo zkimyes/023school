@@ -21,6 +21,7 @@ export default {
   beforeMount(){
     const id = this.$route.params.id;
     this.$store.dispatch('fetchNewsById',id);
+    this.$store.dispatch('setTopShow',true);
   }
 }
 </script>

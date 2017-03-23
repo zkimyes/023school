@@ -5,5 +5,7 @@
 export default {
     header:{
         title:'重庆校园'
-    }
+    },
+    showTop:false,
+    loading:false
 }
