@@ -1,15 +1,6 @@
 <template>
   <div class="page js_show">
     <logo></logo>
-    <form class="weui-search-bar__form">
-      <div class="weui-search-bar__box">
-        <input type="search"
-               class="weui-search-bar__input"
-               id="searchInput"
-               placeholder="搜索"
-               required="">
-      </div>
-    </form>
     <div class="content native-scroll">
       <home-menu></home-menu>
   
