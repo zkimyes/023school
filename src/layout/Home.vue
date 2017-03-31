@@ -5,7 +5,7 @@
       <home-menu></home-menu>
   
       <div class="note-list">
-        <div class="top-title">最新校园动态</div>
+        <div class="Section-title">校园动态</div>
         <ul>
           <li v-for="item in news" class="have-img">
             <router-link :to="{ name: 'Article', params: { id: item.id }}"

@@ -5,8 +5,15 @@ html {
 }
 
 body {
-    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif
+    color: #555;
+    font-size: 16px;
+    line-height: 1.7;
+    word-wrap: break-word;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Wenquanyi Micro Hei,Arial,sans-serif;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
+
+a,a:link,a:visited,a:hover,a:active  {color:#666;}
 
 ul {
     list-style: none
@@ -53,6 +60,15 @@ body {
     font-size: 14px;
     font-weight: 700;
     color: #545454;
+}
+
+.Section-title {
+    padding: 0 14px;
+    height: 32px;
+    color: #626262;
+    line-height: 32px;
+    font-size: 14px;
+    background-color: #e9eef1;
 }
 
 .container {
@@ -385,11 +401,22 @@ body {
 
 .main-logo{
     text-align: center;
-    padding: 20px;
+    padding: 40px 60px;
+    margin: -10px;
+    background: url(http://txqg.oss-cn-shenzhen.aliyuncs.com/023school/9-5/7.png) no-repeat -133px -6px;
 }
 
 .main-logo>img{
-    width:30px;
+    width: 50px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    height: 50px;
+    padding: 6px 6px 6px 10px;
+}
+
+.main-logo>h1{
+    color:#078aab;
+    text-shadow: 1px 1px 1px #fff;
 }
 
 
@@ -585,4 +612,11 @@ body {
     transform-origin: 0 100%;
     -webkit-transform: scaleY(.5);
     transform: scaleY(.5);
+}
+
+.icon{
+    width:30px;
+    height: 30px;
+    margin:5px auto;
+    display: block;
 }
