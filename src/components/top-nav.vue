@@ -1,9 +1,8 @@
 <template>
     <div class="header box">
-        <div class="back box-item"><i class="bi bi-arrow-left"></i></div>
-        <div class="title box-item">小说书城</div><a class="search box-item"
-           href="/search?query=%E6%90%9C%E7%B4%A2"><i class="bi bi-search"></i></a>
-        <div class="profile"></div><span></span></div>
+        <div class="back box-item" @click="back()"><i class="fa fa-chevron-left" aria-hidden="true"></i><span>返回</span></div>
+        <div class="title box-item"></div>
+    </div>
 </template>
 <style>
 
@@ -44,6 +43,11 @@ export default {
 
             }
         ]
+    },
+    methods:{
+        back(){
+            return this.$router.back()
+        }
     }
 }
 </script>

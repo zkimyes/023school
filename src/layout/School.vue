@@ -1,14 +1,27 @@
 <template>
   <div class="page js_show">
     <div class="content native-scroll">
+     <div class="Section-title">校园动态</div>
       <div class="note-list">
-        <div class="top-title">重庆校园</div>
         <ul class="findschool">
           <li :key="school.id" v-for="school in schools">
-            <a href="//m.autohome.com.cn/4259/#pvareaid=101353">
+            <router-link :to="{name:'Detail',params: { id: school.id }}">
             <img :src='"http://www.023xiaoyuan.com"+school.school_info.logo_img'>
               <h4>{{school.school_name}}</h4>
-              <p class="infor"></p> <i class="iconfont icon-arrow-right"></i></a>
+              <p class="infor">
+                <span class="infor-card">
+                 <i class="fa fa-phone"></i> {{school.school_info.school_phone||'暂无联系电话'}}
+                </span>
+                <span class="infor-card">
+                  <i class="fa fa-map-marker"></i>
+                  {{school.school_info.school_addr || '暂无地址'}}
+                </span>
+                <span class="infor-card">
+                  <i class="fa fa-home"></i>
+                  {{school.school_link || '暂无官方网站'}}
+                </span>
+              </p>
+              </router-link>
           </li>
         </ul>
       </div>

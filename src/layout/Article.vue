@@ -3,6 +3,10 @@
     <div class="content">
        <article class="weui-article">
             <h1 v-text="article.title"></h1>
+            <div class="article-info">
+                <span><router-link to="{name:'detail'}">{{article.school}}</router-link></span>
+                <span>发布时间：{{article.create_time|fromNow}}</span>
+            </div>
             <section v-html="article.content">
             </section>
         </article>

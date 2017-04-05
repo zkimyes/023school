@@ -15,7 +15,7 @@
                 <div class="author">
                   <div class="name">
                   {{item.schoolname}}
-                  </div> <span class="time">{{item.create_time}}</span></div>
+                  </div> <span class="time">{{item.create_time|fromNow}}</span></div>
                 <div class="title">{{item.title}}</div>
                 <div class="meta"><i class="iconfont ic-list-read"></i> <span>2029</span> <i class="iconfont ic-list-comments"></i> <span>45</span> <i class="iconfont ic-list-like"></i> <span>169</span> <i class="iconfont ic-list-money"></i> <span>2</span></div>
               </router-link>

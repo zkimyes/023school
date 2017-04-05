@@ -4,9 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-
+import moment from 'moment'
+import _ from 'underscore'
+moment.locale('zh-cn');
 Vue.config.productionTip = false
-
+Vue.filter('fromNow',(date)=>{
+  return moment(date).fromNow()
+})
+Vue.filter('unescape', string => {
+    return _.unescape(string)
+})
 
 router.afterEach(route => {
   document.body.scrollTop = 0;

@@ -5,6 +5,7 @@ import SwiperItem from './swiper/swiper-item'
 import HomeMenu from './home-menu'
 import logo from './logo'
 import loading from './loading'
+import backTop from './back-top'
 export {
     loading,
     logo,
@@ -12,5 +13,6 @@ export {
     TopNav,
     Swiper,
     SwiperItem,
-    HomeMenu
+    HomeMenu,
+    backTop
 }

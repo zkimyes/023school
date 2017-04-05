@@ -1,19 +1,21 @@
 <template>
   <div id="App" class="container">
-    <loading v-show="loading"></loading>
-    <top-nav v-show="showTop"></top-nav>
+    <loading v-if="loading"/>
+    <top-nav v-if="showTop"/>
     <router-view></router-view>
+    <backTop/>
   </div>
 </template>
 
 <script>
 require('./assets/style.css')
-import {TopNav,loading} from './components'
+import {TopNav,loading,backTop} from './components'
 export default {
   name: 'app',
   components:{
     loading,
-    TopNav
+    TopNav,
+    backTop
   },
   computed:{
     loading(){
