@@ -3,7 +3,7 @@
     <div class="content native-scroll">
       <div class="note-list">
         <div class="top-title">{{school.school_name}}</div>
-        <section v-html="school.school_info.explain">
+        <section v-html="school.school_info?school.school_info.explain:null">
         </section>
       </div>
     </div>
@@ -20,16 +20,24 @@ export default {
   },
   computed:{
     school(){
-      let schools = this.$store.getters.getSchool
-         schools['school_info']['explain'] = _.unescape(schools['school_info']['explain'])
-     return schools
+      let school = this.$store.getters.getSchool
+     return school
     }
   },
-  mounted(){
-    const id = this.$route.params.id;
-    this.$store.dispatch('setTopShow',true);
-    this.$store.dispatch('setLoading',false);
-    this.$store.commit('setSchool',id);
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    '$route': 'fetchSchool'
+  },
+  methods:{
+    fetchSchool(){
+      const id = this.$route.params.id;
+      this.$store.dispatch('setTopShow',true);
+      this.$store.dispatch('setLoading',false);
+      this.$store.dispatch('fetchSchool',id);
+    }
+  },
+  created(){
+    this.fetchSchool()
   }
 }
 </script>

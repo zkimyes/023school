@@ -1,32 +1,42 @@
 import service from '../../service'
 export default {
     state: {
-        schools: [
-
-        ],
+        schools: [],
         school: {}
     },
     mutations: {
-        fetchSchool(state, schools) {
+       getSchools(state, schools) {
             state.schools = [
                 ...state.schools,
                 ...schools.result
             ]
         },
-        setSchool(state, schoolId) {
-            state.school = state.schools.filter(sch => { return sch.id === schoolId })[0]
+        getSchool(state, school) {
+            state.school = school
         }
     },
     actions: {
         fetchSchoolList({ commit }, condition) {
             service.fetchSchoolList(condition).then(
                 data => {
-                    commit('setLoading', false);
-                    commit('fetchSchool', data)
+                    commit('setLoading', false)
+                    commit('getSchools', data)
                 },
                 error => {
-                    commit('setLoading', false);
-                    commit('fetchSchool', [])
+                    commit('setLoading', false)
+                    commit('getSchools', [])
+                }
+            )
+        },
+        fetchSchool({commit},id){
+            service.fetchSchool(id).then(
+                data=>{
+                    commit('setLoading',false)
+                    commit('getSchool',data)
+                },
+                error=>{
+                    commit('setLoading',false)
+                    commit('getSchool',{})
                 }
             )
         }

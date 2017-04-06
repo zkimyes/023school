@@ -40,13 +40,6 @@ export default {
   mounted() {
     this.$store.dispatch('setTopShow',true);
     this.$store.dispatch('fetchSchoolList',{area:'',type:''});
-    this.onScroll()
-  },
-  methods:{
-    onScroll(){
-      document.addEventListener('scroll',function spage(e){
-      })
-    }
   }
 }
 </script>
