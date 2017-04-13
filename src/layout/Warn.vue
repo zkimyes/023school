@@ -3,15 +3,9 @@
     <div class="content native-scroll">
        <div class="note-list">
           <ul>
-            <li v-for="item in news" class="have-img">
-              <router-link :to="{ name: 'Article', params: { id: item.id }}"
-                class="wrap-img"><img v-lazy="`http://www.023xiaoyuan.com/${item.tumb}`"></router-link>
+            <li v-for="item in news">
               <div class="content">
                 <router-link :to="{ name: 'Article', params: { id: item.id }}">
-                  <div class="author">
-                    <div class="name">
-                    {{item.school_name||'重庆校园'}}
-                    </div> <span class="time">{{item.create_time|fromNow}}</span></div>
                   <div class="title">{{item.title}}</div>
                 </router-link>
               </div>
@@ -34,11 +28,11 @@
 
 <script>
 export default {
-  name: 'news',
+  name: 'warn',
   data(){
     return {
       page:1,
-      type:''
+      type:12403
     }
   },
   computed: {
@@ -63,7 +57,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('setTopShow', true)
-    this.$store.dispatch('setTitle', '校园动态')
+    this.$store.dispatch('setTitle', '校园警钟')
     this.$store.dispatch('rightMenu', {
       show:false
     })

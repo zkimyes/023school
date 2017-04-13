@@ -15,17 +15,8 @@
 </template>
 
 <script>
-import share from '../components/share'
 export default {
-  name: 'home',
-  components:{
-    share
-  },
-  data(){
-    return {
-      share:false
-    }
-  },
+  name: 'zkarticle',
   computed: {
     article() {
       return this.$store.getters.getNews
@@ -33,13 +24,17 @@ export default {
   },
   created() {
     const id = this.$route.params.id
-    this.$store.dispatch('fetchNewsById', id)
+    this.$store.dispatch('fetchZkInfo', id)
+
   },
   beforeMount() {
-    let _this =this
     this.$store.dispatch('setTopShow', true)
     this.$store.dispatch('rightMenu', {
-      show:false,
+      text: '分享',
+      icon: 'fa-share',
+      action: () => {
+        alert('分享')
+      }
     })
   },
   beforeUpdate(){

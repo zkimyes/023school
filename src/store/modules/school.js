@@ -1,7 +1,9 @@
 import service from '../../service'
+import _ from 'underscore'
 export default {
     state: {
         schools: [],
+        schoolTotalPage:0,
         school: {}
     },
     mutations: {
@@ -10,8 +12,10 @@ export default {
                 ...state.schools,
                 ...schools.result
             ]
+            state.schoolTotalPage = Math.ceil(schools.count/10)
         },
         getSchool(state, school) {
+            school['school_info']['explain'] = _.unescape(school['school_info']['explain'])
             state.school = school
         }
     },
@@ -47,6 +51,9 @@ export default {
         },
         getSchool: state => {
             return state.school
+        },
+        getPageNub:state=>{
+            return state.schoolTotalPage
         }
     }
 }

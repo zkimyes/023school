@@ -24,6 +24,10 @@ body {
     background-color: #fff
 }
 
+.freeze{
+    overflow:hidden !important;
+}
+
 .box-item {
     box-flex: 1;
     -webkit-box-flex: 1;
@@ -35,25 +39,55 @@ body {
 }
 
 
+.width65{
+    width:65px;
+}
+
+.width50{
+    width:50px;
+}
+
+.weui-article h1{
+    margin-bottom: 0;
+    text-align:center;
+}
+
 .header {
-    background: #0ebcf7;
-    border-bottom: solid 1px #15afe3;
+    background: #0eb6f7;
+    border-bottom: solid 1px #0eb6f7;
     color: #fff;
     height: 50px;
     line-height: 50px;
     font-size: 20px;
-    padding: 0 15px;
     vertical-align: middle;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
 }
 
-.header .title {
+.header .title{
+    float:left;
     text-align: center;
-    margin-left: -5px;
+    width: 200px;
+    line-height: 55px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 55px;
+    white-space: nowrap;
 }
 
 .header .back {
-    text-align: left;
-    float:left;
+    float: left;
+    width: 80px;
+    line-height: 55px;
+    text-align: center;
+}
+
+.header .right{
+     float: right;
+    width: 80px;
+    line-height: 55px;
+    text-align: center;
 }
 
 .link {
@@ -260,6 +294,10 @@ body {
 .article-info{
     text-align: left;
     font-size: 12px;
+    text-align: center;
+    line-height: 40px;
+    border-bottom: 1px #ddd dotted;
+    margin-bottom:10px;
 }
 
 .page.icons {
@@ -459,13 +497,14 @@ body {
     padding-right: 95px;
 }
 .note-list .content {
-    padding: 20px 0 25px;
+    padding: 20px 0 10px;
 }
 .content {
     color: #2f2f2f;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.7;
+    padding: 40px 0 0;
 }
 
 
@@ -555,10 +594,10 @@ body {
 
 .findschool li .infor {
     position: relative;
-    margin-top: 0.5rem;
     font-size: 0.75rem;
     color: #888;
     float:left;
+    max-width: 252px;
 }
 
 .infor-card{
@@ -576,14 +615,29 @@ body {
 .loading{
     position: fixed;
     z-index: 9999;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 40px;
     background: #fff;
     text-align: center;
-    line-height: 600px;
-    font-size: 30px;
+    line-height: 40px;
+    font-size: 18px;
+    text-align: center;
+    margin-left: -75px;
+    margin-top: -40px;
+    /* border: 1px #ddd solid; */
+    border-radius: 4px;
+    box-shadow: 1px 1px 6px 1px #5d5d5d;
+    z-index: 10000;
+}
+
+.loading-mask{
+    background: rgba(0,0,0,.5);
+    width:100%;
+    height:100%;
+    position: fixed;
+    z-index: 10000;
 }
 
 
@@ -647,4 +701,136 @@ body {
     height: 30px;
     margin:5px auto;
     display: block;
+}
+
+.section-title{
+    line-height: 40px;
+    text-indent: 10px;
+}
+
+.off-canvas{
+    width:180px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top:0;
+    z-index: 10001;
+    background: #fff;
+    box-shadow: rgb(123, 123, 123) 0px 0px 3px 0px;
+}
+
+.mask {
+    background: rgba(0,0,0,.5);
+    width:100%;
+    height:100%;
+    position: fixed;
+    z-index: 10000;
+}
+
+.label{
+    border:1px #0eb6f7 solid;
+    padding: 0 5px;
+    font-size: 12px;
+    margin: 2px 5px;
+    border-radius: 2px;
+    display: inline-block;
+    text-align: center;
+}
+
+.label.actived{
+    background: #0eb6f7;
+    color:#fff;
+}
+
+.condition{
+    overflow-y: auto;
+}
+
+.sure{
+    position: fixed;
+    right: 13px;
+    top: 10px;
+    background: #fff;
+    z-index: 10017;
+    border-radius: 4px;
+    width: 66px;
+    text-align: center;
+    height: 30px;
+    line-height: 32px;
+}
+
+.sure i{
+    color: #35b0e0;
+}
+
+.backtop{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    font-size: 22px;
+    background: #1296db;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    text-align-last: center;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.pagenation {
+    padding: 5px 0;
+    text-align: center
+}
+
+.pagenation span{
+    display: inline-block;
+    background: #fff;
+    border:1px #ddd solid;
+    padding: 0 5px;
+    border-radius: 4px;
+}
+
+.homeNav{
+    position: fixed;
+    background: #1296db;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 0 10px 1px #757575;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.homeNav>span{
+    display: inline-block;
+    width:31.3%;
+    line-height: 35px;
+    text-align: center;
+    color:#fff;
+}
+
+.homeNav>span>a{
+    color:#fff;
+}
+
+.empty-page{
+    color:#ccc;
+    text-align: center;
+    margin:30% auto;
+}
+
+.empty-page i.fa{
+    font-size: 60px;
+    color:#ccc;
+    margin: 5%;
+}
+
+
+
+/**动效*/
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }

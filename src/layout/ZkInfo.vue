@@ -3,15 +3,9 @@
     <div class="content native-scroll">
        <div class="note-list">
           <ul>
-            <li v-for="item in news" class="have-img">
-              <router-link :to="{ name: 'Article', params: { id: item.id }}"
-                class="wrap-img"><img v-lazy="`http://www.023xiaoyuan.com/${item.tumb}`"></router-link>
+            <li v-for="item in news">
               <div class="content">
-                <router-link :to="{ name: 'Article', params: { id: item.id }}">
-                  <div class="author">
-                    <div class="name">
-                    {{item.school_name||'重庆校园'}}
-                    </div> <span class="time">{{item.create_time|fromNow}}</span></div>
+                <router-link :to="{ name: 'ZkArticle', params: { id: item.id }}">
                   <div class="title">{{item.title}}</div>
                 </router-link>
               </div>
@@ -34,36 +28,35 @@
 
 <script>
 export default {
-  name: 'news',
+  name: 'zkinfo',
   data(){
     return {
-      page:1,
-      type:''
+      page:1
     }
   },
   computed: {
     news(){
-      return this.$store.getters.getNewsList
+      return this.$store.getters.getZkInfoList
     },
     totalPage(){
-      return this.$store.getters.getNewsTotalPage
+      return this.$store.getters.getZkxxTotalPage
     }
   },
   methods:{
-    getNewsList(area="",type="",page=1) {
-      this.$store.dispatch('fetchNewsList',{area:'',type,page})
+    getNewsList(page=1) {
+      this.$store.dispatch('fetchZkInfoList',{page})
     },
     nextPage(){
       this.page <=this.totalPage?this.page++:this.page;
-      this.getNewsList('',this.type,this.page)
+      this.getNewsList(this.page)
     }
   },
   beforeMount() {
-    this.getNewsList('',this.type,this.page)
+    this.getNewsList(this.page)
   },
   mounted() {
     this.$store.dispatch('setTopShow', true)
-    this.$store.dispatch('setTitle', '校园动态')
+    this.$store.dispatch('setTitle', '招考信息')
     this.$store.dispatch('rightMenu', {
       show:false
     })

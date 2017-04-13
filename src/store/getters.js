@@ -7,5 +7,11 @@ export default {
     },
     loading:state=>{
         return state.loading
+    },
+    showMask:state=>{
+        return state.showMask
+    },
+    getRightMenu:state=>{
+        return state.header.rightMenu
     }
 }

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import state from './state'
 import getters from './getters'
-import home from './modules/home'
+import main from './modules/main'
 import school from './modules/school'
 Vue.use(Vuex)
 
@@ -10,25 +10,46 @@ const debug = process.env.NODE_ENV !== 'production'
 
 const actions = {
     setLoading({ commit }, isloading) {
-        isloading?(
-          commit('setLoading', isloading)
-        ):(
-          setTimeout(()=>{
+        if (isloading) {
             commit('setLoading', isloading)
-          },1000)
-        )
+        } else {
+            setTimeout(() => {
+                commit('setLoading', isloading)
+            }, 1000)
+        }
+    },
+    showMask({ commit }, isShow) {
+        commit('showMask', isShow)
+    },
+    setTitle({ commit }, title) {
+        commit('setTitle', title)
     },
     setTopShow({ commit }, isTopShow) {
         commit('showTop', isTopShow)
+    },
+    rightMenu({ commit }, option) {
+        commit('setRightMenu', option)
     }
 }
 
 const mutations = {
+    setTitle(state, title) {
+        state.header.title = title
+    },
     setLoading(state, isloading) {
         state.loading = isloading
     },
+    showMask(state, isShow) {
+        state.showMask = isShow
+    },
     showTop(state, isTopShow) {
         state.showTop = isTopShow
+    },
+    setRightMenu(state, option) {
+        state.header.rightMenu = {
+            ...state.header.rightMenu,
+            ...option
+        };
     }
 }
 
@@ -38,7 +59,7 @@ export default new Vuex.Store({
     actions,
     mutations,
     modules: {
-        home,
+        main,
         school
     },
     strict: debug

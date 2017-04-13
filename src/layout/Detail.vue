@@ -2,7 +2,6 @@
   <div class="page js_show">
     <div class="content native-scroll">
       <div class="note-list">
-        <div class="top-title">{{school.school_name}}</div>
         <section v-html="school.school_info?school.school_info.explain:null">
         </section>
       </div>
@@ -11,33 +10,41 @@
 </template>
 
 <script>
-import {HomeMenu} from '../components'
+import { HomeMenu } from '../components'
 import _ from 'underscore'
 export default {
   name: 'home',
   components: {
     HomeMenu
   },
-  computed:{
-    school(){
+  computed: {
+    school() {
       let school = this.$store.getters.getSchool
-     return school
+      return school
     }
   },
   watch: {
     // 如果路由有变化，会再次执行该方法
     '$route': 'fetchSchool'
   },
-  methods:{
-    fetchSchool(){
+  methods: {
+    fetchSchool() {
       const id = this.$route.params.id;
-      this.$store.dispatch('setTopShow',true);
-      this.$store.dispatch('setLoading',false);
-      this.$store.dispatch('fetchSchool',id);
+      this.$store.dispatch('fetchSchool', id);
     }
   },
-  created(){
+  created() {
     this.fetchSchool()
+    this.$store.dispatch('setTopShow', true);
+    this.$store.dispatch('rightMenu', {
+       show:false
+    })
+  },
+  beforeUpdate(){
+    this.$store.dispatch('setTitle', this.school.school_name)
+  },
+  mounted() {
+    this.$store.dispatch('setLoading', false);
   }
 }
 </script>
