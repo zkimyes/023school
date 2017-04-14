@@ -12,8 +12,7 @@ import Detail from '@/layout/Detail'
 Vue.use(Router)
 
 export default new Router({
-    routes: [
-        {
+    routes: [{
             path: '/',
             name: 'Home',
             component: Home
@@ -21,22 +20,22 @@ export default new Router({
         {
             path: '/news',
             name: 'News',
-            component:News
+            component: News
         },
         {
             path: '/warning',
             name: 'Warn',
-            component:Warn
+            component: Warn
         },
         {
             path: '/zkinfo',
             name: 'ZkInfo',
-            component:ZkInfo
+            component: ZkInfo
         },
         {
             path: '/zkdetail/:id',
             name: 'ZkArticle',
-            component:ZkArticle
+            component: ZkArticle
         },
         {
             path: '/news/:id',
@@ -52,22 +51,22 @@ export default new Router({
             path: '/school/:id',
             name: 'Detail',
             component: Detail,
-            beforeEnter(to,from,next){
-                if(!to.params.id || typeof to.params.id != 'number'){
+            beforeEnter(to, from, next) {
+                if (!to.params.id || typeof to.params.id != 'number') {
                     next(false)
                 }
                 next()
             }
         },
         {
-            path:'/error',
-            name:'404',
-            components:EpmtyPage
+            path: '/error',
+            name: '404',
+            components: EpmtyPage
         },
         {
-            path:'*',
-            name:'404',
-            component:EpmtyPage
+            path: '*',
+            name: '404',
+            component: EpmtyPage
         }
     ]
 })

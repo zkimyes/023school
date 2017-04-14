@@ -26,9 +26,6 @@
     </div>
     <div class="content native-scroll">
       <div class="note-list">
-        <div class="choosed-condition">
-
-        </div>
         <ul class="findschool">
           <li :key="school.id"
               v-for="school in schools">
@@ -51,7 +48,7 @@
             </router-link>
           </li>
         </ul>
-        <div v-if="schools" class="pagenation">
+        <div v-if="schools && schools.length>0" class="pagenation">
           <span v-if="totalPage>page" @click="nextPage()">
               <i class="fa fa-hand-o-down" aria-hidden="true"></i> 
               点击加载更多
@@ -61,6 +58,11 @@
               没有更多了
           </span>
         </div>
+        <div class="empty-page" v-else>
+            <i class="fa fa-times-circle" aria-hidden="true"></i>
+            <br>
+            没有找到该类型的学校哦
+        </div>
       </div>
     </div>
   </div>
@@ -68,7 +70,7 @@
 
 <script>
 export default {
-  name: 'school',
+  name: 'School',
   data() {
     return {
       showCondition: false,
@@ -115,7 +117,6 @@ export default {
     }
   },
   watch: {
-    '$route': 'getSchools',
     'mask': function (n,o) {
       if(o === true && n === false){
           this.showCondition = false

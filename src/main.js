@@ -12,44 +12,43 @@ moment.locale('zh-cn');
 Vue.use(VueLazyload)
 
 Vue.use(VueLazyload, {
-  preLoad: 1.3,
-  error: '/dist/img-loading.png',
-  loading: 'assets/img-loading.png',
-  listenEvents: [ 'scroll' ],
-  attempt: 3
+    preLoad: 1.3,
+    error: '/dist/img-loading.png',
+    loading: 'assets/img-loading.png',
+    listenEvents: ['scroll'],
+    attempt: 3
 })
 
 Vue.config.productionTip = false
-Vue.filter('fromNow',(date)=>{
-  return moment(date).fromNow()
+Vue.filter('fromNow', (date) => {
+    return moment(date).fromNow()
 })
 Vue.filter('unescape', string => {
-    return _.unescape(string)
-})
-
-//百度统计跟踪
+        return _.unescape(string)
+    })
+    //百度统计跟踪
 router.beforeEach((to, from, next) => {
-  _hmt.push(['_trackPageview', '/wap/#'+to.path]);
-  next()
+    // _hmt.push(['_trackPageview', `/wap/#/${to.path}`]);
+    next()
 })
 
 router.afterEach(route => {
-  document.body.scrollTop = 0;
+    document.body.scrollTop = 0;
 })
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  store,
-  template: '<App/>',
-  components: { App },
-  watch:{
-    '$route': 'showloading'
-  },
-  methods:{
-    showloading(){
-      this.$store.dispatch('setLoading',true);
+    el: '#app',
+    router,
+    store,
+    template: '<App/>',
+    components: { App },
+    watch: {
+        '$route': 'showloading'
+    },
+    methods: {
+        showloading() {
+            this.$store.dispatch('setLoading', true);
+        }
     }
-  }
 })

@@ -3,16 +3,22 @@ import _ from 'underscore'
 export default {
     state: {
         schools: [],
-        schoolTotalPage:0,
+        schoolTotalPage: 0,
         school: {}
     },
     mutations: {
-       getSchools(state, schools) {
-            state.schools = [
-                ...state.schools,
-                ...schools.result
-            ]
-            state.schoolTotalPage = Math.ceil(schools.count/10)
+        getSchools(state, schools) {
+            if (schools && schools.result != null && schools.result.length > 0) {
+                state.schools = [
+                    ...state.schools,
+                    ...schools.result
+                ]
+                state.schoolTotalPage = Math.ceil(schools.count / 10)
+            } else {
+                state.schools = []
+            }
+
+
         },
         getSchool(state, school) {
             school['school_info']['explain'] = _.unescape(school['school_info']['explain'])
@@ -27,20 +33,20 @@ export default {
                     commit('getSchools', data)
                 },
                 error => {
-                    commit('setLoading', false)
-                    commit('getSchools', [])
+                    commit('getSchools', null)
                 }
             )
         },
-        fetchSchool({commit},id){
+        fetchSchool({ commit }, id) {
             service.fetchSchool(id).then(
-                data=>{
-                    commit('setLoading',false)
-                    commit('getSchool',data)
+                data => {
+                    console.log(data)
+                    commit('setLoading', false)
+                    commit('getSchool', data || {})
                 },
-                error=>{
-                    commit('setLoading',false)
-                    commit('getSchool',{})
+                error => {
+                    commit('setLoading', false)
+                    commit('getSchool', {})
                 }
             )
         }
@@ -52,7 +58,7 @@ export default {
         getSchool: state => {
             return state.school
         },
-        getPageNub:state=>{
+        getPageNub: state => {
             return state.schoolTotalPage
         }
     }

@@ -19,13 +19,8 @@ export default {
   },
   computed: {
     school() {
-      let school = this.$store.getters.getSchool
-      return school
+      return this.$store.getters.getSchool
     }
-  },
-  watch: {
-    // 如果路由有变化，会再次执行该方法
-    '$route': 'fetchSchool'
   },
   methods: {
     fetchSchool() {
